@@ -23,7 +23,14 @@ function fmtDate(dateStr: string) {
   const d = new Date(dateStr + "T00:00:00");
   return `${d.getDate()} ${MONTHS_SHORT[d.getMonth()]}`;
 }
-function todayStr() { return new Date().toISOString().split("T")[0]; }
+function todayStr() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+}
+function parseDate(dateStr: string) {
+  const [y,m,d] = dateStr.split("-").map(Number);
+  return new Date(y, m-1, d);
+}
 
 function KpiCard({ label, value, icon, color }: any) {
   return (
