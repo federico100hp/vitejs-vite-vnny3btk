@@ -20,7 +20,7 @@ function fmtEur(n: number) {
   return `€${Number(n).toLocaleString("it-IT", { minimumFractionDigits: 1, maximumFractionDigits: 1 })}`;
 }
 function fmtDate(dateStr: string) {
-  const d = new Date(dateStr + "T00:00:00");
+  const d = parseDate(r.date)
   return `${d.getDate()} ${MONTHS_SHORT[d.getMonth()]}`;
 }
 function todayStr() {
